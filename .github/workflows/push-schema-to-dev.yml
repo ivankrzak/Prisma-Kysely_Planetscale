@@ -31,5 +31,7 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
           run: yarn install
 
+      - run: yarn add prisma
+      - run: yarn add @prisma/client
       - name: Push schema changes
         run: yarn prisma db push
