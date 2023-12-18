@@ -1,0 +1,3 @@
+query Hello($message: String!) {
+  hello(message: $message)
+}

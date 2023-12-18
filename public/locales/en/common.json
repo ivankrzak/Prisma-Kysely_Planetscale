@@ -1,0 +1,20 @@
+{
+  "appName": "Next App",
+  "auth": {
+    "signIn": {
+      "continueWithEmail": "Continue with email",
+      "enterYourEmail": "Enter your email",
+      "toYourAccount": "Sign in to your account",
+      "withEmail": "Sign in with s email",
+      "withProvider": "Sign in with {{provider}}",
+      "orContinueWith": "or continue with"
+    }
+  },
+  "Email": "Email",
+  "Error": "Error",
+  "Home": "Home",
+  "GoBack": "Go back",
+  "changeLocale": "Change locale",
+  "loading": "Loading...",
+  "logOut": "Log out"
+}

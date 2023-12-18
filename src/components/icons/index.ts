@@ -1,0 +1,6 @@
+export * from './ArrowSimpleIcon'
+export * from './AsterixIcon'
+export * from './CheckboxCheckIcon'
+export * from './CloseIcon'
+export * from './TooltipIcon'
+export * from './UserIcon'

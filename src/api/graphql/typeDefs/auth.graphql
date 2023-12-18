@@ -1,0 +1,1 @@
+directive @auth(requires: [Role!] = null) on QUERY | MUTATION | FIELD_DEFINITION
