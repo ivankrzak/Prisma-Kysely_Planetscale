@@ -3,7 +3,7 @@ name: push-schema-to-dev
 on:
   push:
     branches: [dev]
-    paths: ['src/api/drizzle/schema.ts']
+    # paths: ['src/api/drizzle/schema.ts']
 
 jobs:
   deploy-migrations-to-dev:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Create .env file
-        run: echo PLANETSCALE_CONNECTION_URL=${{ secrets.PSCALE_DEV_DATABASE_URL }}?ssl={"rejectUnauthorized":true} > .env
+        run: echo PLANETSCALE_CONNECTION_URL=${{ secrets.PSCALE_DEV_DATABASE_URL }} > .env
 
       - uses: actions/setup-node@v3
         with:
