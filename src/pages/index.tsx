@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           void (() => signOut())()
         }}
       >
-        logOut
+        logOut logOut
       </button>
     </div>
   )
