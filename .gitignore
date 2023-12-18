@@ -47,9 +47,6 @@ next-env.d.ts
 #IDE
 .idea
 
-#Storybook
-storybook-static
-
 # Sentry
 .sentryclirc
 next.config.original.js

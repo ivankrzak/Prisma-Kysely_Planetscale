@@ -4,11 +4,12 @@ import { useSetSentryUser } from 'hooks/useSetSentryUser'
 import type { AppProps } from 'next/app'
 import { Outfit } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
-import { appWithTranslation } from 'next-i18next'
 import { BaseAppProps, NextPageWithLayout } from 'types/next'
 import { REFETCH_INTERVAL } from 'constants/common/auth'
-import { Toaster } from 'components/ui/toaster'
 import '../../globals.css'
+import { ToastContainer } from 'components/auth/toast/ToastContainer'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from 'theme'
 
 /*
  Uncomment for SSG
@@ -30,19 +31,17 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   )
 }
 
-const AppWithI18n = appWithTranslation(App)
-
 const outfit = Outfit({ subsets: ['latin'] })
 
 const AppWithAuth = (props: AppPropsWithLayout) => {
   const { pageProps } = props
   return (
-    <main className={outfit.className}>
+    <ChakraProvider theme={theme}>
+      <ToastContainer />
       <SessionProvider session={pageProps.session} refetchInterval={REFETCH_INTERVAL}>
-        <AppWithI18n {...props} />
-        <Toaster />
+        <App {...props} />
       </SessionProvider>
-    </main>
+    </ChakraProvider>
   )
 }
 
