@@ -1,8 +1,8 @@
 overwrite: true
 schema: 'src/api/graphql/typeDefs/*.graphql'
-documents: 'src/apollo/graphql/**/*.graphql'
+documents: 'src/graphql/**/*.graphql'
 generates:
-  src/apollo/generated/graphqlClient.ts:
+  src/generated/graphqlClient.ts:
     plugins:
       - 'typescript'
       - 'typescript-operations'

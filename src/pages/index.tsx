@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 import { Route } from 'constants/common/routes'
-import { useHelloQuery } from 'apollo/generated/graphqlClient'
+import { useHelloQuery } from 'generated/graphqlClient'
 
 const Home: NextPage = () => {
   const { data } = useHelloQuery({ variables: { message: 'Hello message' } })
