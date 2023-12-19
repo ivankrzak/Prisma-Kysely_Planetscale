@@ -15,7 +15,9 @@
     "graphql:generate-types": "graphql-codegen --config graphql-codegen-server.yml",
     "prisma:generate": "prisma generate",
     "prisma:migrate:prod": "prisma migrate deploy",
-    "prisma:migrate:dev": "prisma migrate dev"
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:push": "prisma push",
+    "prisma:push:accept-data-loss": "prisma push --accept-data-loss"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --cache --fix",

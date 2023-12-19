@@ -17,7 +17,6 @@ model Product {
   name        String   @unique
   description String?
   isPublished Boolean  @default(false)
-  isDigital   Boolean  @default(false)
   isFeatured  Boolean  @default(false)
   // syncVariantPrices       Boolean             @default(true)
   // isBasketRecommendation  Boolean             @default(false)
