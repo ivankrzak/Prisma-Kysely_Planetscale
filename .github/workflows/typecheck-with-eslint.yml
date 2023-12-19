@@ -1,0 +1,22 @@
+name: Run tsc with eslint on all files
+
+on:
+  push:
+    # ignore changes in documentation files
+    paths-ignore:
+      - '*.md'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Service containers
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20.9.0'
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
+      - run: yarn install
+      - run: yarn typecheck
+      - run: yarn eslint
