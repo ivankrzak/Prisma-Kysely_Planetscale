@@ -3,7 +3,7 @@ name: push-schema-to-dev
 on:
   push:
     branches: [dev]
-    # paths: ['src/api/drizzle/schema.ts']
+    paths: ['prisma/schema.prisma']
 
 jobs:
   deploy-migrations-to-dev:

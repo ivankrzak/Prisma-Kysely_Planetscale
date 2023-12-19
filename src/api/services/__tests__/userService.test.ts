@@ -1,4 +1,4 @@
-import { PrismaClient } from 'api/prismaClient'
+import { PrismaClient } from 'api/prisma/prismaClient'
 import { onUserCreated } from 'api/services/userService'
 import { createRandomUser } from 'api/testing/__utils__/userFactory'
 import { describe, expect, test } from 'vitest'
