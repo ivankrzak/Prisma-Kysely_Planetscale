@@ -1,5 +1,5 @@
 import { Role, User } from '@prisma/client'
-import { PrismaClient } from 'api/prismaClient'
+import { PrismaClient } from 'api/prisma/prismaClient'
 import { logger } from './loggerService'
 
 export function updateUserRoles(user: User, roles: Role[]): Promise<User> {

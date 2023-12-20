@@ -1,6 +1,6 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { Role } from '@prisma/client'
-import { PrismaClient } from 'api/prismaClient'
+import { PrismaClient } from 'api/prisma/prismaClient'
 import { onUserCreated } from 'api/services/userService'
 import { ApiEnv } from 'api/utils/apiEnv'
 import { addSeconds, getUnixTime } from 'date-fns'

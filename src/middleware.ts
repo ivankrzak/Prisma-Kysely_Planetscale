@@ -47,5 +47,5 @@ export default withAuth(
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const config = {
   // https://nextjs.org/docs/advanced-features/middleware#matcher
-  matcher: ['/((?!api|signin|error|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/admin/:path*', '/member/:path*'],
 }

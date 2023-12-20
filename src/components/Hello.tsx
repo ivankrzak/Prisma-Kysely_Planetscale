@@ -1,4 +1,4 @@
-import { useHelloQuery } from '../apollo/generated/graphqlClient'
+import { useHelloQuery } from '../generated/graphqlClient'
 
 function Hello({ message }: { message: string }) {
   const { loading, error, data } = useHelloQuery({ variables: { message } })

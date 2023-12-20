@@ -1,7 +1,7 @@
 import { getMockedSession, TestSession } from 'api/testing/__utils__/auth'
 import { createRandomUser } from 'api/testing/__utils__/userFactory'
 import { executeGQL } from 'api/testing/graphql'
-import { HelloDocument, HelloQuery, HelloQueryVariables } from 'apollo/generated/graphqlClient'
+import { HelloDocument, HelloQuery, HelloQueryVariables } from 'generated/graphqlClient'
 import { getServerSession } from 'next-auth'
 import { AuthOptions } from 'next-auth/core/types'
 import { describe, expect, test, vi } from 'vitest'

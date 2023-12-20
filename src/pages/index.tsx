@@ -1,12 +1,15 @@
 import type { NextPage } from 'next'
-import { GetServerSidePropsContext } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { getToken } from 'next-auth/jwt'
 import { signOut } from 'next-auth/react'
 import { Route } from 'constants/common/routes'
+import { useHelloQuery } from 'generated/graphqlClient'
 
 const Home: NextPage = () => {
+  const { data } = useHelloQuery({ variables: { message: 'Hello message' } })
+
+  console.log('data', data)
+
   return (
     <div>
       <Head>
@@ -26,22 +29,10 @@ const Home: NextPage = () => {
           void (() => signOut())()
         }}
       >
-        logOut
+        logOut logOut
       </button>
     </div>
   )
-}
-
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const token = await getToken({ req: context.req })
-  if (!token) {
-    return {
-      redirect: {
-        destination: Route.SignIn,
-        permanent: false,
-      },
-    }
-  }
 }
 
 export default Home

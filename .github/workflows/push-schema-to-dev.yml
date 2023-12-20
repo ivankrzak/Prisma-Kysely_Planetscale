@@ -3,7 +3,7 @@ name: push-schema-to-dev
 on:
   push:
     branches: [dev]
-    # paths: ['src/api/drizzle/schema.ts']
+    paths: ['prisma/schema.prisma']
 
 jobs:
   deploy-migrations-to-dev:
@@ -31,5 +31,7 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
           run: yarn install
 
+      - run: yarn add prisma
+
       - name: Push schema changes
-        run: yarn prisma db push
+        run: yarn prisma:push:accept-data-loss
