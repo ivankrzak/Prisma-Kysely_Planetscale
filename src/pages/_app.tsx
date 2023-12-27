@@ -5,7 +5,6 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import { BaseAppProps, NextPageWithLayout } from 'types/next'
 import { REFETCH_INTERVAL } from 'constants/common/auth'
-import { ToastContainer } from 'components/auth/toast/ToastContainer'
 import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from 'theme'
 
@@ -33,7 +32,6 @@ const AppWithAuth = (props: AppPropsWithLayout) => {
   const { pageProps } = props
   return (
     <ChakraProvider theme={theme}>
-      <ToastContainer />
       <SessionProvider session={pageProps.session} refetchInterval={REFETCH_INTERVAL}>
         <App {...props} />
       </SessionProvider>

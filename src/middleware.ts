@@ -1,8 +1,8 @@
-import { Role } from '@prisma/client'
 import { ErrorKey } from 'api/errors'
 import { NextResponse } from 'next/server'
 import withAuth from 'next-auth/middleware'
 import { Route } from 'constants/common/routes'
+import { Role } from 'api/kysely/kyselyClient'
 
 /**
  * For any member route, we want to ensure that the user is authenticated.
@@ -22,7 +22,7 @@ export default withAuth(
     }
 
     const isAdminRoute = pathname.startsWith(Route.Admin)
-    const hasAdminPermission = token.roles.includes(Role.Admin)
+    const hasAdminPermission = token.role === Role.Admin
 
     if (isAdminRoute && !hasAdminPermission) {
       return NextResponse.redirect(

@@ -1,4 +1,4 @@
-import { User } from '@prisma/client'
+import { User } from 'api/kysely/kyselyClient'
 
 export type TestSession = {
   user: User

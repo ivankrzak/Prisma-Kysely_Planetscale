@@ -1,5 +1,4 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { Role } from '@prisma/client'
 import { PrismaClient } from 'api/prisma/prismaClient'
 import { onUserCreated } from 'api/services/userService'
 import { ApiEnv } from 'api/utils/apiEnv'
@@ -10,6 +9,7 @@ import Auth0Provider from 'next-auth/providers/auth0'
 import Email from 'next-auth/providers/email'
 import { ONE_DAY, REFETCH_INTERVAL } from 'constants/common/auth'
 import { Route } from 'constants/common/routes'
+import { Role } from 'api/kysely/kyselyClient'
 
 export const providers: Provider[] = [
   Email({
@@ -50,7 +50,7 @@ export const AuthOptions: NextAuthOptions = {
       ...token,
       ...user,
       exp: getUnixTime(addSeconds(Date.now(), ONE_DAY)),
-      roles: user?.roles ?? (token?.roles.length ? token.roles : [Role.Member]),
+      roles: user?.role ?? (token?.role.length ? token.roles : Role.Member),
     }),
     session: ({ session, token }) => ({
       ...session,
@@ -59,6 +59,7 @@ export const AuthOptions: NextAuthOptions = {
   },
   events: {
     createUser: async ({ user }) => {
+      // @ts-ignore
       await onUserCreated(user)
     },
   },

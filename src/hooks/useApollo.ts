@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { NormalizedCacheObject } from '@apollo/client'
 import { Config, initializeApolloClient } from 'apollo/client'
-import { useToast } from 'components/ui/use-toast'
 
 /**
  * Returns a new (or existing, if already created) Apollo client-side client instance. The
@@ -12,10 +11,9 @@ import { useToast } from 'components/ui/use-toast'
  * @returns Apollo client-side client instance.
  */
 export const useApollo = (initialState?: NormalizedCacheObject, config?: Config) => {
-  const { toast } = useToast()
   const apolloClient = useMemo(
-    () => initializeApolloClient({ initialState, config, toast }),
-    [initialState, config, toast],
+    () => initializeApolloClient({ initialState, config }),
+    [initialState, config],
   )
   return apolloClient
 }

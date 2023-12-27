@@ -1,4 +1,4 @@
-import { User } from '@prisma/client'
+import { User } from 'api/kysely/kyselyClient'
 import { YogaInitialContext } from 'graphql-yoga'
 import { GetServerSidePropsContext } from 'next'
 

@@ -3,7 +3,6 @@ import { FieldValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ClientSafeProvider, signIn } from 'next-auth/react'
 import { Schema } from 'zod'
-import { useToast } from 'components/ui/use-toast'
 
 export const useSignInForm = <T extends FieldValues, S extends Schema>(
   provider: ClientSafeProvider,
@@ -16,7 +15,6 @@ export const useSignInForm = <T extends FieldValues, S extends Schema>(
         }
       : {},
   )
-  const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false)
 
   return {
@@ -30,7 +28,7 @@ export const useSignInForm = <T extends FieldValues, S extends Schema>(
             ...formData,
           })
           if (response?.error) {
-            toast({ title: response?.error, variant: 'destructive' })
+            console.log({ title: response?.error, variant: 'destructive' })
           }
         } finally {
           setIsLoading(false)

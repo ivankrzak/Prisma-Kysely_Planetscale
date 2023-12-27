@@ -1,7 +1,6 @@
 import { ApolloClient, ApolloLink, HttpLink, NormalizedCacheObject } from '@apollo/client'
 import { onError } from '@apollo/client/link/error'
 import { merge } from 'lodash'
-import { ToastFn } from 'components/ui/use-toast'
 import { createInMemoryCache } from 'utils/app/createInMemoryCache'
 
 let globalApolloClient: ApolloClient<NormalizedCacheObject> | undefined
@@ -10,7 +9,7 @@ const IS_BROWSER = typeof window !== 'undefined'
 
 export type Config = { host: string }
 
-function createClientLink({ config, toast }: { config?: Config; toast: ToastFn }) {
+function createClientLink({ config }: { config?: Config }) {
   const host = config?.host ? config.host : ''
   const httpLink = new HttpLink({
     uri: `${host}/api/graphql`,
@@ -19,14 +18,14 @@ function createClientLink({ config, toast }: { config?: Config; toast: ToastFn }
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (networkError) {
-      toast({
+      console.log({
         title: networkError.message,
         variant: 'destructive',
       })
     }
     if (graphQLErrors) {
       graphQLErrors.forEach((graphQLError) => {
-        toast({
+        console.log({
           title: graphQLError.message,
           variant: 'destructive',
         })
@@ -63,13 +62,11 @@ function createApolloClient({ link }: { link?: ApolloLink }) {
 export function initializeApolloClient({
   initialState,
   config,
-  toast,
 }: {
   initialState?: NormalizedCacheObject
   config?: Config
-  toast: ToastFn
 }) {
-  const link = createClientLink({ config, toast })
+  const link = createClientLink({ config })
   const createClient = () => createApolloClient({ link })
   const apolloClient = !IS_BROWSER ? createClient() : globalApolloClient ?? createClient()
 

@@ -21,7 +21,7 @@ const authDirective = (schema: GraphQLSchema) =>
             throw new UnauthorizedError()
           }
         } else if (roles.length > 0) {
-          if (!roles.every((role) => context.user.roles.includes(role))) {
+          if (!roles.every((role) => context.user.role === role)) {
             throw new ForbiddenError()
           }
         }

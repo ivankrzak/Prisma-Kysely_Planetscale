@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { User } from '@prisma/client'
+import { User } from 'api/kysely/kyselyClient'
 
 export function createRandomUser(
   propertiesToOverride: Partial<Omit<User, 'id'>> = {},
@@ -9,7 +9,7 @@ export function createRandomUser(
     email: faker.internet.email(),
     emailVerified: null,
     image: null,
-    roles: [],
+    role: 'Member',
     ...propertiesToOverride,
   }
 }
